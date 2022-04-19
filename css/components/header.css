@@ -23,7 +23,12 @@ header .search input {
     padding: 1em;
 }
 
-header .search button{
-    width:40px;
+header .search button {
+    width: 40px;
 }
 
+header .search button:hover {
+
+    color: var(--orange);
+    font-weight: 600;
+}

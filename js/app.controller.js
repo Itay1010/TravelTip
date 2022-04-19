@@ -8,6 +8,7 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 
 function onInit() {
+    renderLocations()
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
@@ -47,7 +48,25 @@ function onGetUserPos() {
             console.log('err!!!', err);
         })
 }
-function onPanTo() {
+function onPanTo(lat = 35.6895, lng = 139.6917) {
     console.log('Panning the Map');
-    mapService.panTo(35.6895, 139.6917);
+    mapService.panTo(lat, lng);
+}
+
+function renderLocations() {
+    const locations = [
+        { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
+        { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
+    ]
+    const strHMLs = locations.map(location => {
+        return `
+        <tr class="flex align-center">
+            <td><button onclick=onDeleteLoc(${location.id}) class="btn-delete">x</button></td>
+            <td class="location-name">${location.name}</td>
+            <td><button onclick="onPan(${location.lat, location.lng})" class="btn-go">Go</button></td>
+        </tr>   
+        `
+    }).join('')
+
+    document.querySelector('table').innerHTML = strHMLs
 }
