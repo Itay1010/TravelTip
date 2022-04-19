@@ -37,9 +37,15 @@ function onCopyLocation() {
 }
 
 function checkParams() {
-    let params = window.location.search ? window.location.search.substring(1) : ''
-    console.log(params.substring(1));
-    return Promise.resolve()
+    const params = new URLSearchParams(window.location.search)
+    return Promise.resolve(
+        {
+            lat: params.get('lat') || 32.0749831,
+            lng: params.get('lng') || 34.9120554
+        }
+    )
+
+
 }
 
 function onGetLocs() {
