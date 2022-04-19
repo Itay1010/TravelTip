@@ -1,4 +1,6 @@
 footer {
     height: 50px;
     background-color: var(--header);
+    color: var(--white);
+    text-align: center;
 }

@@ -99,7 +99,7 @@ main .locations .btn-go:hover::after {
 }
 
 main #map {
-    width: 500px;
+    width: 100%;
     height: 500px;
     margin-inline-start: 20px;
     border-radius: 0.5em;
