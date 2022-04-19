@@ -6,15 +6,16 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
-// window.renderLocations = renderLocations
+window.onDeleteLoc = onDeleteLoc;
 
 function onInit() {
 
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
-            renderLocations()
+
         })
+        // .then(getLocs)
         .catch(() => console.log('Error: cannot init map'));
 }
 
@@ -39,14 +40,18 @@ function onGetLocs() {
         })
 }
 
+function onDeleteLoc(id) {
+    locService.deleteLoc(id)
+        .then(renderLocations)
+}
+
 function onGetUserPos() {
     getPosition()
         .then(pos => {
             console.log('User position is:', pos.coords);
-            document.querySelector('.user-pos').innerText =
-                `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+
             mapService.panTo(pos.coords.latitude, pos.coords.longitude)
-            mapService.addMarker(pos.coords)
+            mapService.addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude })
         })
         .catch(err => {
             console.log('err!!!', err);
@@ -55,17 +60,18 @@ function onGetUserPos() {
 
 function onPanTo(lat = 35.6895, lng = 139.6917) {
     console.log('Panning the Map')
-    mapService.addMarker({lat, lng})
+    mapService.addMarker({ lat, lng })
     mapService.panTo(lat, lng)
 }
 
 function renderLocations() {
     const locations = locService.getLocs()
         .then(locations => {
+            console.log(locations);
             const strHMLs = locations.map(location => {
                 return `
             <tr class="flex align-center">
-                <td><button onclick=onDeleteLoc(${location.id}) class="btn-delete">x</button></td>
+                <td><button dataset-id="${location.id}"onclick=onDeleteLoc(this.dataset.id) class="btn-delete">x</button></td>
                 <td class="location-name">${location.name}</td>
                 <td><button onclick="onPanTo(${location.lat}, ${location.lng})" class="btn-go">Go</button></td>
             </tr>   
