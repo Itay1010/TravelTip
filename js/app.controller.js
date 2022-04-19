@@ -9,10 +9,11 @@ window.onGetUserPos = onGetUserPos;
 // window.renderLocations = renderLocations
 
 function onInit() {
-    renderLocations()
+
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            renderLocations()
         })
         .catch(() => console.log('Error: cannot init map'));
 }
@@ -44,14 +45,17 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords);
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+            mapService.panTo(pos.coords.latitude, pos.coords.longitude)
         })
         .catch(err => {
             console.log('err!!!', err);
         })
 }
+
 function onPanTo(lat = 35.6895, lng = 139.6917) {
-    console.log('Panning the Map');
-    mapService.panTo(lat, lng);
+    console.log('Panning the Map')
+    mapService.addMarker({lat, lng})
+    mapService.panTo(lat, lng)
 }
 
 function renderLocations() {

@@ -3,7 +3,8 @@ import { storageService } from './storage.service.js'
 
 export const locService = {
     getLocs,
-    addLoc
+    addLoc,
+    deleteLoc
 }
 
 const gLocs = storageService.loadFromStorage('locsDB') || [
@@ -24,8 +25,15 @@ function addLoc(name, lat, lng) {
     saveLocs()
 }
 
+function deleteLoc(id) {
+    let idx = gLocs.findIndex((loc) => loc.id === id)
+    gLocs.splice(idx, 1)
+    saveLocs()
+    console.log(Glocs)
+}
+
 function saveLocs() {
-    saveToStorage('locsDB', gLocs)
+    storageService.saveToStorage('locsDB', gLocs)
 }
 
 function _makeLoc(name, lat, lng) {
