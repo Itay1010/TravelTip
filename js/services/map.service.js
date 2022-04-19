@@ -28,9 +28,9 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 
 }
 
-function addMarker(loc) {
+function addMarker(lat, lng) {
     var marker = new google.maps.Marker({
-        position: loc,
+        position: { lat, lng },
         map: gMap,
         title: 'Hello World!'
     });
@@ -52,8 +52,10 @@ function addListeners() {
         infoWindow.setContent(
             `
             <h3 class="info-window">New place</h3>
-            <input type="text" class="location-input" oninput="onNewLoc(event)" placeholder="Name the place"></input>
-            <button class="save-place-btn"></button>
+            <form onsubmit="onNewLoc(event)">
+                <input type="text" class="location-input" placeholder="Name the place"></input>
+                <button class="btn-save-place">Save</button>
+            </form>
             `
         );
         infoWindow.open(gMap)
