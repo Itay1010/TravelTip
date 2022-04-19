@@ -15,7 +15,7 @@ function onInit() {
             console.log('Map is ready');
 
         })
-        // .then(getLocs)
+        .then(renderLocations)
         .catch(() => console.log('Error: cannot init map'));
 }
 
@@ -42,7 +42,7 @@ function onGetLocs() {
 
 function onDeleteLoc(id) {
     locService.deleteLoc(id)
-        .then(renderLocations)
+    renderLocations()
 }
 
 function onGetUserPos() {
@@ -65,7 +65,7 @@ function onPanTo(lat = 35.6895, lng = 139.6917) {
 }
 
 function renderLocations() {
-    const locations = locService.getLocs()
+    locService.getLocs()
         .then(locations => {
             console.log(locations);
             const strHMLs = locations.map(location => {

@@ -7,8 +7,10 @@ export const locService = {
     deleteLoc
 }
 
-const gLocs = storageService.loadFromStorage('locsDB')
-
+const gLocs = storageService.loadFromStorage('locsDB') || [
+    _makeLoc('Greatplace', 32.047104, 34.832384),
+    _makeLoc('Neveragain', 32.047201, 34.832581)
+]
 
 function getLocs() {
     return new Promise((resolve, reject) => {
@@ -27,7 +29,7 @@ function deleteLoc(id) {
     let idx = gLocs.findIndex((loc) => loc.id === id)
     gLocs.splice(idx, 1)
     saveLocs()
-    console.log(gLocs)
+    console.log('gLocs',gLocs)
 }
 
 function saveLocs() {
