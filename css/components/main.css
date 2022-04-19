@@ -4,7 +4,7 @@ main {
 
 }
 
-main .user-loaction {
+main .user-location {
     margin-bottom: 20px;
 }
 
@@ -13,19 +13,59 @@ main .map-funcs {
     grid-gap: 10px;
     grid-template-columns: repeat(3, 1fr);
     height: 30%;
+    margin-bottom: 20px;
+
 }
 
-main .map-funcs button {
+main button {
+    background: transparent;
+    border: 1px solid var(--header);
+    color: var(--header);
     height: 100%;
     width: 100px;
 }
 
+main button:hover {
+    background-color: var(--btn);
+    color: var(--white);
+    border: none;
 
-main .loactions .btn-delete {
-    color:red
+}
+
+main .locations tr {
+    margin-bottom: 0.5em;
+}
+
+
+main .locations button {
+    height: 30px;
+    width: 30px;
+}
+
+main .locations .location-name {
+    margin-inline-end: 1em;
+}
+
+main .locations .btn-delete {
+    border: none;
+}
+
+main .locations .btn-go {
+    background-color: var(--btn);
+    border: none;
+    color: var(--white);
+}
+
+main .locations .btn-go:hover {
+    color: var(--orange);
+    font-weight: 600;
+
 }
 
 main #map {
     width: 500px;
     height: 500px;
+    margin-inline-start: 20px;
+    border-radius: 0.5em;
+    border: 1px solid var(--header)
 }
