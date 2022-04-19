@@ -1,13 +1,12 @@
-
-
 export const mapService = {
     initMap,
     addMarker,
     panTo
 }
 
-var gMap;
+let gMap;
 
+//init
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
@@ -16,10 +15,17 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
                 center: { lat, lng },
-                zoom: 15
+                zoom: 15,
+                disableDefaultUI: true,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_CENTER
+                },
+                scaleControl: true,
             })
             console.log('Map!', gMap);
-        })
+        }).then(addListeners)
+
 }
 
 function addMarker(loc) {
@@ -34,6 +40,24 @@ function addMarker(loc) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
+}
+
+function addListeners() {
+    let infoWindow = new google.maps.InfoWindow()
+    gMap.addListener("click", (mapsMouseEvent) => {
+        infoWindow.close()
+        infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng,
+        });
+        infoWindow.setContent(
+            `
+            <h3 class="info-window">New place</h3>
+            <input type="text" class="location-input" oninput="onNewLoc(event)" placeholder="Name the place"></input>
+            <button class="save-place-btn"></button>
+            `
+        );
+        infoWindow.open(gMap)
+    });
 }
 
 

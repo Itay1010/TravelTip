@@ -1,5 +1,6 @@
 export const locService = {
-    getLocs
+    getLocs,
+    addLoc
 }
 
 
@@ -16,4 +17,6 @@ function getLocs() {
     });
 }
 
-
+function addLoc() {
+    
+}
