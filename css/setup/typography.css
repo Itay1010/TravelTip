@@ -1,0 +1,9 @@
+ @font-face {
+    font-family: impact;
+    src: url(/fonts/Impact.ttf);
+} 
+
+@font-face {
+    font-family: mont;
+    src: url(/fonts/Montserrat.ttf);
+}

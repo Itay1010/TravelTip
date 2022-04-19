@@ -1,0 +1,31 @@
+main {
+    padding: 0 2em;
+    flex-grow: 1;
+
+}
+
+main .user-loaction {
+    margin-bottom: 20px;
+}
+
+main .map-funcs {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    height: 30%;
+}
+
+main .map-funcs button {
+    height: 100%;
+    width: 100px;
+}
+
+
+main .loactions .btn-delete {
+    color:red
+}
+
+main #map {
+    width: 500px;
+    height: 500px;
+}

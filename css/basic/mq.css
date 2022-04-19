@@ -1,0 +1,164 @@
+/* MOBILE */
+@media screen and (max-width:650px) {
+    .main-layout {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .main-header ul.main-nav {
+        display: none;
+        max-height: 0;
+        transform: translateY(100%);
+
+    }
+
+    body.menu-open .main-header ul.main-nav {
+        display: block;
+        position: absolute;
+        width: 100%;
+        flex-direction: column;
+        left: 0;
+        bottom: 0;
+        transform: translateY(100%);
+        max-height: 100vh;
+
+    }
+
+    .btn-toggle-menu::before{
+        content: '☰';
+
+    }
+
+    body.menu-open .btn-toggle-menu::before{
+        content: 'x';
+
+    }
+
+
+    .main-header .main-nav li {
+        width: 100%;
+        height: 100%;
+        background: var(--brand);
+        margin-inline-start: 0;
+
+
+    }
+
+    .main-header .main-nav>* :not(.active) {
+        color: var(--white);
+        font-weight: 600;
+
+    }
+
+    .main-header .main-nav a.active {
+        background-color: var(--mobile);
+        color: var(--brand);
+        font-weight: 600;
+        box-shadow: none
+    }
+
+    .gallery .filter {
+        flex-direction: column;
+        position: relative;
+        top: 80px;
+    }
+
+    .gallery .filter input {
+        height: 60px;
+        font-size: 20px;
+        padding-top: 20px;
+    }
+
+    .gallery .filter .filter-keys p {
+        font-size: 16px;
+    }
+
+    .gallery .filter .filter-keys .for-large-only {
+        display: none;
+    }
+
+    .gallery .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        position: relative;
+        top: 80px;
+    }
+
+    .meme-main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .meme-main aside {
+            margin: 0 auto;
+
+    }
+
+    .meme-main canvas {
+        position: relative;
+        top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .meme .meme-emoji {
+        height: 80px;
+    }
+
+    footer {
+        position: relative;
+        top: 80px;
+    }
+}
+
+
+/* DESKTOP */
+@media (min-width:650px) {
+    .main-layout {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .main-header .main-nav a:hover {
+        color: var(--black);
+    }
+
+    .main-header button.btn-toggle-menu {
+        display: none;
+    }
+
+    .gallery .filter {
+        flex-direction: row;
+        height: 100px;
+
+    }
+
+    .gallery .filter input {
+        height: 40px;
+        font-size: 24px;
+    }
+
+    .gallery .filter .filter-keys p {
+        font-size: 18px;
+    }
+
+    .gallery .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .meme-main {
+        flex-direction: row;
+        gap: 40px;
+
+    }
+    
+    .meme .meme-emoji {
+        height: 135px;
+    }
+
+
+}

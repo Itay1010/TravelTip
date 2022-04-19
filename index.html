@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelTip</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h3>isdfsdfgfdgfdfgdt</h3>
-    <h3>123214214</h3>
-    <h1>TravelTip Starter</h1>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button>
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
-    
+<body class="flex col">
+    <header class="flex space-between align-center">
+        <h1>TravelTip</h1>
+        <section class="search flex">
+            <input type="text" placeholder="Look for location">
+            <button class="btn-search">GO</button>
+        </section>
+    </header>
+    <main>
+        <section class="user-location flex space-between">
+            <h2>Current Location:<span></span></h2>
+            <button class="btn-copy-location">Copy location</button>
+        </section>
+        <section class="main-app flex">
+            <section class="map-tools flex col">
+                <div class="map-funcs">
+                    <button class="btn-user-location">My location</button>
+                    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker</button>
+                    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
+                    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
+                    <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
+                </div>
+                <div class="locations">
+                    <table>
+                        <tr>
+                            <td><button class="btn-delete">X</button></td>
+                            <td class="location-name">someplace</td>
+                            <td><button class="btn-go">Go</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <div id="map"></div>
 
+        </section>
+
+
+    </main>
+    <footer>
+        <p>You are at: <span class="user-pos"></span></p>
+        <p>Locations: <span class="locs"></span></p>
+    </footer>
     <script type="module" src="js/app.controller.js"></script>
 </body>
+
 </html>
