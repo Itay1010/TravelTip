@@ -47,19 +47,22 @@ function addListeners() {
     let infoWindow = new google.maps.InfoWindow()
     gMap.addListener("click", (mapsMouseEvent) => {
         infoWindow.close()
+        const lat = mapsMouseEvent.latLng.lat()
+        const lng = mapsMouseEvent.latLng.lng()
         infoWindow = new google.maps.InfoWindow({
-            position: mapsMouseEvent.latLng,
+            position: mapsMouseEvent.latLng
         });
         infoWindow.setContent(
             `
-            <h3 class="info-window">New place</h3>
-            <form onsubmit="onNewLoc(event)">
-                <input type="text" class="location-input" placeholder="Name the place"></input>
+            <h3 class="info-window">New Location</h3>
+            <form onsubmit="onAddLoc(event,${lat},${lng})">
+                <input type="text" class="location-input" placeholder="Name the location"></input>
                 <button class="btn-save-place">Save</button>
             </form>
             `
         );
         infoWindow.open(gMap)
+
     });
 }
 

@@ -7,6 +7,7 @@ window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onDeleteLoc = onDeleteLoc;
+window.onAddLoc = onAddLoc;
 
 function onInit() {
 
@@ -63,6 +64,15 @@ function onPanTo(lat = 35.6895, lng = 139.6917) {
     mapService.addMarker({ lat, lng })
     mapService.panTo(lat, lng)
 }
+function onAddLoc(ev, lat, lng) {
+    // infoWindow.close()
+    ev.preventDefault()
+    // console.log(ev.target[0].value);
+    const newLocName = ev.target[0].value
+    locService.addLoc(newLocName, lat, lng)
+    renderLocations()
+}
+
 
 function renderLocations() {
     locService.getLocs()
