@@ -29,7 +29,7 @@ function deleteLoc(id) {
     let idx = gLocs.findIndex((loc) => loc.id === id)
     gLocs.splice(idx, 1)
     saveLocs()
-    console.log(Glocs)
+    console.log(gLocs)
 }
 
 function saveLocs() {

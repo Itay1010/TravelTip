@@ -51,7 +51,7 @@ main button:hover {
 }
 
 main .locations h3 {
-  color: var(--header);
+    color: var(--header);
     margin-bottom: 10px;
 
 }
