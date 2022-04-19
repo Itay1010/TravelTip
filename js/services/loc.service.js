@@ -7,7 +7,7 @@ export const locService = {
     deleteLoc
 }
 
-const gLocs = storageService.loadFromStorage('locsDB').length ? storageService.loadFromStorage('locsDB') : [
+const gLocs = (storageService.loadFromStorage('locsDB')) ? storageService.loadFromStorage('locsDB') : [
     _makeLoc('Greatplace', 32.047104, 34.832384),
     _makeLoc('Neveragain', 32.047201, 34.832581)
 ]

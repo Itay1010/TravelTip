@@ -2,15 +2,16 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
 window.onload = onInit;
-window.onAddMarker = onAddMarker;
+// window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onDeleteLoc = onDeleteLoc;
+window.onCopyLocation = onCopyLocation;
 
 function onInit() {
-
-    mapService.initMap()
+    checkParams()
+        .then(mapService.initMap)
         .then(() => {
             console.log('Map is ready');
 
@@ -27,9 +28,17 @@ function getPosition() {
     })
 }
 
-function onAddMarker() {
-    console.log('Adding a marker');
-    mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+function onCopyLocation() {
+    getPosition().then(({ coords }) => [coords.latitude, coords.longitude]).then((latLng) => {
+        window.navigator.clipboard.writeText(`https://itay1010.github.io/TravelTip/?lat=${latLng.join('&lng=')}`)
+    }).then(openCopyModal)
+
+}
+
+function checkParams() {
+    let params = window.location.search ? window.location.search.substring(1) : ''
+    console.log(params.substring(1));
+    return Promise.resolve()
 }
 
 function onGetLocs() {
@@ -81,4 +90,9 @@ function renderLocations() {
             document.querySelector('table').innerHTML = strHMLs
         })
 
+}
+
+
+function openCopyModal() {
+    console.log('opening modal')
 }
