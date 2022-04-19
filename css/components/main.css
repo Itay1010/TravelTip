@@ -105,3 +105,22 @@ main #map {
     border-radius: 0.5em;
     border: 1px solid var(--header)
 }
+
+main h3.info-window {
+    margin: 0 0 10px;
+}
+
+main button.btn-save-place {
+    height: 30px;
+    width: 60px;
+}
+
+main .location-input {
+    height: 30px;
+    border-radius: 0.5em;
+    outline-color: var(--orange);
+    padding: 1em;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+
+}
