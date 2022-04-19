@@ -28,12 +28,13 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 
 }
 
-function addMarker(lat, lng) {
-    var marker = new google.maps.Marker({
-        position: { lat, lng },
+function addMarker(loc) {
+    let marker = new google.maps.Marker({
+        position: loc,
         map: gMap,
         title: 'Hello World!'
     });
+    console.log(loc);
     return marker;
 }
 
