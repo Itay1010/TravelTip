@@ -13,24 +13,25 @@
         <h1>TravelTip</h1>
         <section class="search flex">
             <input type="text" placeholder="Look for location">
-            <button class="btn-search">GO</button>
+            <button onsubmit="onSearchLoc(event.value)" class="btn-search">GO</button>
         </section>
     </header>
     <main>
         <section class="user-location flex space-between">
-            <h2>Current Location:<span></span></h2>
+            <h2>Current Location: <span>Some place</span></h2>
             <button class="btn-copy-location">Copy location</button>
         </section>
         <section class="main-app flex">
             <section class="map-tools flex col">
                 <div class="map-funcs">
-                    <button class="btn-user-location">My location</button>
-                    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker</button>
-                    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-                    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
+                    <!-- <button class="btn-user-location">My location</button>
+                    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker</button> -->
+                    <button onclick="onGetUserPos()" class="btn-user-pos">Show My Location</button>
+                    <!-- <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button> -->
                     <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
                 </div>
                 <div class="locations">
+                    <h3>My saved places:</h3>
                     <table>
                         <!-- <tr>
                             <td><button class="btn-delete">X</button></td>

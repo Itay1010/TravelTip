@@ -21,6 +21,7 @@ header .search input {
     border-radius: 0.5em;
     outline-color: var(--orange);
     padding: 1em;
+    font-size: 0.9em;
 }
 
 header .search button {

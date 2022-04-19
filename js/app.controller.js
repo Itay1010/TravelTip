@@ -6,6 +6,7 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
+// window.renderLocations = renderLocations
 
 function onInit() {
     renderLocations()
@@ -54,19 +55,19 @@ function onPanTo(lat = 35.6895, lng = 139.6917) {
 }
 
 function renderLocations() {
-    const locations = [
-        { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
-        { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
-    ]
-    const strHMLs = locations.map(location => {
-        return `
-        <tr class="flex align-center">
-            <td><button onclick=onDeleteLoc(${location.id}) class="btn-delete">x</button></td>
-            <td class="location-name">${location.name}</td>
-            <td><button onclick="onPan(${location.lat, location.lng})" class="btn-go">Go</button></td>
-        </tr>   
-        `
-    }).join('')
+    const locations = locService.getLocs()
+        .then(locations => {
+            const strHMLs = locations.map(location => {
+                return `
+            <tr class="flex align-center">
+                <td><button onclick=onDeleteLoc(${location.id}) class="btn-delete">x</button></td>
+                <td class="location-name">${location.name}</td>
+                <td><button onclick="onPanTo(${location.lat}, ${location.lng})" class="btn-go">Go</button></td>
+            </tr>   
+            `
+            }).join('')
 
-    document.querySelector('table').innerHTML = strHMLs
+            document.querySelector('table').innerHTML = strHMLs
+        })
+
 }
