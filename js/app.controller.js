@@ -40,8 +40,8 @@ function checkParams() {
     const params = new URLSearchParams(window.location.search)
     return Promise.resolve(
         {
-            lat: params.get('lat') || 32.0749831,
-            lng: params.get('lng') || 34.9120554
+            lat: +params.get('lat') || 32.0749831,
+            lng: +params.get('lng') || 34.9120554
         }
     )
 

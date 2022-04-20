@@ -8,6 +8,7 @@ let gMap;
 
 //init
 function initMap(latLng) {
+    console.log('initMap - latLng', latLng)
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
